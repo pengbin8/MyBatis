@@ -57,34 +57,34 @@ public class LayerController {
 		return layerService.updateLayer(layer);
 	}
 	
-	public static void main(String[] args) {
-		List<String> strs=new ArrayList<String>() ;
-		strs.add("abcA");strs.add("acf");strs.add("acb");
-		List<Object> sorted = strs.stream().sorted().peek(c->System.err.println("res="+c))
-				.map(p->p.toUpperCase()).filter(c->c.endsWith("A")).collect(Collectors.toList());
-		//System.out.println(sorted);
-		Map<String, Long> groupby = strs.stream()
-				.collect(Collectors.groupingBy(c->c,Collectors.counting()));
-		//System.out.println(sorted);
-		
-		List<UpdateLayer> layers=new ArrayList<UpdateLayer>() ;
-		layers.add(new UpdateLayer(1,"1","1","1"));
-		layers.add(new UpdateLayer(5,"5","5","5"));
-		layers.add(new UpdateLayer(3,"3","3","3"));
-		layers.add(new UpdateLayer(4,"4","4","4"));
-		layers.sort(Comparator.comparing(UpdateLayer::getId).reversed());
-		for (UpdateLayer updateLayer : layers) {
-			System.out.println(updateLayer.getId());
-		}
-		UpdateLayer updateLayer = layers.stream().sorted(Comparator.comparing(UpdateLayer::getId).reversed()).findFirst().get();
-		System.out.println("stream="+updateLayer.getId());
-		int res=function(4,v->v*2);
-		//System.out.println(res);
-		
-	}
-	
-	public static int function(int a,Function<Integer ,Integer > fun) {
-		return fun.apply(a);
-	}
+//	public static void main(String[] args) {
+//		List<String> strs=new ArrayList<String>() ;
+//		strs.add("abcA");strs.add("acf");strs.add("acb");
+//		List<Object> sorted = strs.stream().sorted().peek(c->System.err.println("res="+c))
+//				.map(p->p.toUpperCase()).filter(c->c.endsWith("A")).collect(Collectors.toList());
+//		//System.out.println(sorted);
+//		Map<String, Long> groupby = strs.stream()
+//				.collect(Collectors.groupingBy(c->c,Collectors.counting()));
+//		//System.out.println(sorted);
+//		
+//		List<UpdateLayer> layers=new ArrayList<UpdateLayer>() ;
+//		layers.add(new UpdateLayer(1,"1","1","1"));
+//		layers.add(new UpdateLayer(5,"5","5","5"));
+//		layers.add(new UpdateLayer(3,"3","3","3"));
+//		layers.add(new UpdateLayer(4,"4","4","4"));
+//		layers.sort(Comparator.comparing(UpdateLayer::getId).reversed());
+//		for (UpdateLayer updateLayer : layers) {
+//			System.out.println(updateLayer.getId());
+//		}
+//		UpdateLayer updateLayer = layers.stream().sorted(Comparator.comparing(UpdateLayer::getId).reversed()).findFirst().get();
+//		System.out.println("stream="+updateLayer.getId());
+//		int res=function(4,v->v*2);
+//		//System.out.println(res);
+//		
+//	}
+//	
+//	public static int function(int a,Function<Integer ,Integer > fun) {
+//		return fun.apply(a);
+//	}
 	
 }
