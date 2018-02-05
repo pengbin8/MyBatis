@@ -22,7 +22,10 @@ public class LayerService {
 	public boolean deleteLayers(ArrayList<Integer> ids) {
 		return layerDao.deleteLayers(ids);
 	}
-	public List<Layer> getLayers(){
+	public List<Layer> getLayers(String appId,String objectCode){
+		Map<String,Object> map=new HashMap<>();
+		map.put("APP_ID",appId);
+		map.put("OBJECTTYPE_CODE",objectCode);
 		return layerDao.getLayers();
 	}
 	public boolean updateLayer(UpdateLayer layer) {
