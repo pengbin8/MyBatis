@@ -13,6 +13,6 @@ public interface LayerDao {
 	//批量插入，批量刪除，查詢，更新
 	boolean inseryLayers(ArrayList<Layer> layers);
 	boolean deleteLayers(ArrayList<Integer> ids);
-	List<Layer> getLayers();
+	List<Layer> getLayers(Map<String,Object> map);
 	boolean updateLayer(UpdateLayer layer);
 }
