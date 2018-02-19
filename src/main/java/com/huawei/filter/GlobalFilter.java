@@ -1,4 +1,4 @@
-package com.huawei.Filter;
+package com.huawei.filter;
 
 /**
  * @author apple
