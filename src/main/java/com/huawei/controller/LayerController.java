@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Description;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +29,8 @@ import io.swagger.annotations.ApiOperation;
 @Api(description="图层控制器")
 public class LayerController {
 
+	
+	
 	@Autowired
 	private LayerService layerService;
 	
@@ -55,6 +56,7 @@ public class LayerController {
 	@RequestMapping(value="/gis/getLayers",method=RequestMethod.GET)
 	@ApiOperation(value = "图层查询")
 	public List<Layer> getLayers(String appId,String objectCode) {
+//		logger.info("appid:"+appId+"objectcode:"+objectCode);
 		return layerService.getLayers(appId,objectCode);
 	}
 	
