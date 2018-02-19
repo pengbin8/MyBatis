@@ -1,58 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.huawei.dao.Task.TaskDao">
-	<insert id="insertTask" parameterType="java.util.List"
+<mapper namespace="com.huawei.dao.gis.LayerDao">
+	<insert id="inseryLayers" parameterType="java.util.List"
 		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO
-		task_workflow_instance_t (
-		APP_ID,
-		PROJECT_CODE,
-		OBJECTTYPE_CODE,
-		TASK_WORKFLOW_TYPE_CODE,
-		STEP,
-		CREATED_BY,
-		CREATED_DATE,
-		LAST_UPDATED_BY,
-		LAST_UPDATED_DATE
+		layer (
+		APPID,
+		PROJECTCODE,
+		OBJECTCODE
 		) values
-		<foreach collection ="list" item="it" index= "index" separator =",">
-             (
-            #{it.appId,jdbcType=VARCHAR},
+		<foreach collection="list" item="it" index="index" separator=",">
+			(
+			#{it.appId,jdbcType=VARCHAR},
 			#{it.projectCode,jdbcType=VARCHAR},
-			#{it.objectCode,jdbcType=VARCHAR},
-			#{it.taskworkflowtypeCode,jdbcType=VARCHAR},
-			#{it.step},
-			#{it.createdby,jdbcType=VARCHAR},
-			#{it.createddate,jdbcType=TIMESTAMP},
-			#{it.lastupdatedby,jdbcType=VARCHAR},
-			#{it.lastupdateddate,jdbcType=TIMESTAMP}
-                )
-        </foreach>	
+			#{it.objectCode,jdbcType=VARCHAR}
+			)
+		</foreach>
 	</insert>
-	<select id="searchTask" parameterType="java.util.Map" resultType="java.util.Map">
-		select * from task_workflow_instance_t
+	<select id="getLayers" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select * from layer
 		where 1=1
-		<if test="APP_ID !=null">
-		 	and APP_ID=#{APP_ID}
+		<if test="APPID !=null">
+			and APPID=#{APPID}
 		</if>
-		<if test="OBJECT_CODE !=null">
-		 	and OBJECT_CODE=#{OBJECT_CODE}
-		</if>
-		<if test="PROJECT_CODE !=null">
-		 	and PROJECT_CODE=#{PROJECT_CODE}
+		<if test="OBJECTCODE !=null">
+			and OBJECTCODE=#{OBJECTCODE}
 		</if>
 	</select>
-	<update id="updateTask" parameterType="com.huawei.model.UpdateTaskModel">
-		update task_workflow_instance_t
+	<update id="updateLayer" parameterType="com.huawei.model.UpdateLayer">
+		update layer
 		<set>
-		<if test="step !=null">STEP=#{step,jdbcType=INTEGER},</if>
-		<if test="lastupdateddate !=null">LAST_UPDATED_DATE=#{lastupdateddate,jdbcType=VARCHAR}</if>
+			<if test="appId !=null">APPID=#{appId,jdbcType=VARCHAR},</if>
+			<if test="objectCode !=null">OBJECTCODE=#{objectCode,jdbcType=VARCHAR},</if>
+			<if test="projectCode !=null">PROJECTCODE=#{projectCode,jdbcType=VARCHAR},</if>
 		</set>
 		where ID=#{id}
 	</update>
-	<delete id="deleteTask" parameterType="java.util.List">
-		delete from task_workflow_instance_t where id in 
-		<foreach collection="list" item="id" open="(" separator="," close=")">
+	<delete id="deleteLayers" parameterType="java.util.List">
+		delete from layer where id in
+		<foreach collection="list" item="id" open="(" separator=","
+			close=")">
 			#{id}
 		</foreach>
 	</delete>

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -17,6 +18,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 
 @Configuration
 @MapperScan(basePackages=GisDataSourceConfig.PACKAGE,sqlSessionFactoryRef="gisSqlSessionFactory")
+@ConfigurationProperties(value = "classpath:application-${spring.profiles.active}.properties")
 public class GisDataSourceConfig {
 
 	static final String PACKAGE="com.huawei.dao.gis";

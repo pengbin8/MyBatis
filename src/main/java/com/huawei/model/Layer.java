@@ -1,5 +1,13 @@
 package com.huawei.model;
 
+/**
+ * @author apple
+ * @date 2018年2月19日-下午3:27:43
+ * @description 图层模型
+ * @version v1.0.0
+ * @copyRight .huawei.com
+ * @eSpace pwx391198
+ */
 public class Layer {
 	
 	private String appId;

@@ -1,18 +1,20 @@
 package com.huawei.model;
 
+/**
+ * @author apple
+ * @date 2018年2月19日-下午3:27:52
+ * @description 图层更新模型
+ * @version v1.0.0
+ * @copyRight .huawei.com
+ * @eSpace pwx391198
+ */
 public class UpdateLayer {
 	private Integer id;
 	private String appId;
 	private String objectCode;
 	private String projectCode;
 	
-	public UpdateLayer(Integer id, String appId, String objectCode, String projectCode) {
-		super();
-		this.id = id;
-		this.appId = appId;
-		this.objectCode = objectCode;
-		this.projectCode = projectCode;
-	}
+	
 	public Integer getId() {
 		return id;
 	}
